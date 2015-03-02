@@ -15,7 +15,7 @@ static NSString *localizeRegexs[] = {
     @"NSLocalizedStringFromTableInBundle\\s*\\(\\s*@\"(.*)\"\\s*,\\s*(.*)\\s*,\\s*(.*)\\s*,\\s*(.*)\\s*\\)",
     @"NSLocalizedStringWithDefaultValue\\s*\\(\\s*@\"(.*)\"\\s*,\\s*(.*)\\s*,\\s*(.*)\\s*,\\s*(.*)\\s*,\\s*(.*)\\s*\\)"
 };
-static NSString *stringRegexs = @"@\"[^\"]*\"";
+static NSString *stringRegexs = @"\"[^\"]*\"";
 @implementation QuickLocalization
 static id sharedPlugin = nil;
 
@@ -71,7 +71,7 @@ static id sharedPlugin = nil;
             }
             NSString *string = [line substringWithRange:matchedRangeInLine];
 //            NSLog(@"string index:%d, %@", i, string);
-            NSString *outputString = [NSString stringWithFormat:@"NSLocalizedString(%@, %@)", string, string];
+            NSString *outputString = [NSString stringWithFormat:@"NSLocalizedString(%@, comment: %@)", string, string];
             addedLength = addedLength + outputString.length - string.length;
             if ([textView shouldChangeTextInRange:matchedRangeInDocument replacementString:outputString]) {
                 [textView.textStorage replaceCharactersInRange:matchedRangeInDocument
