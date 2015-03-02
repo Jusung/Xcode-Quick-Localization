@@ -1,4 +1,4 @@
-Xcode-Quick-Localization
+Xcode-Quick-Localization For Swift
 ========================
 
 Xcode Plugin to Convert "content" to NSLocalizedString("content", comment: "content")
